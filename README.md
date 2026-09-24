@@ -1,79 +1,81 @@
-# Haseeb — Cinematic 3D Portfolio
+# 🎭 Haseeb — 3D Cinematic Portfolio
 
-Next.js 14 · react-three-fiber · GSAP ScrollTrigger · Tailwind CSS
+An immersive, high-performance 3D cinematic developer portfolio built with Next.js 14, React Three Fiber, GSAP, and Tailwind CSS. Featuring smooth camera transitions, interactive 3D skill universes, and dynamic particle effects.
 
-## 1. Install
+🌐 **Live Demo:** [haseeb-portfolio-ochre.vercel.app](https://haseeb-portfolio-ochre.vercel.app/)
 
-```bash
+---
+
+## 🚀 Key Features
+
+- **🎬 3D Cinematic Experience:** Seamless interactive 3D Canvas integrated with smooth camera rigs and path animations.
+- **🌌 Interactive Skills Universe:** Floating 3D elements representing technical skills and frameworks.
+- **📜 Smooth Scroll Storytelling:** GSAP ScrollTrigger and Lenis smooth scrolling for high-fps layout transitions.
+- **🏆 Interactive 3D Certificates:** Custom 3D plates displaying certifications and achievements.
+- **📧 Dynamic Contact Form:** Web3Forms API integration for direct inline messaging.
+- **⚡ Performance Optimized:** Dynamic performance tiering based on device capabilities.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 14 (App Router)
+- **3D Engine:** React Three Fiber (R3F) / Three.js
+- **Animations:** GSAP (ScrollTrigger) & Lenis Smooth Scroll
+- **State Management:** Zustand
+- **Styling:** Tailwind CSS & PostCSS
+- **Forms:** Web3Forms API
+- **Deployment:** Vercel
+
+---
+
+## 📂 Project Structure
+
+```text
+haseeb-portfolio/
+├── public/                # Static assets, images, certificates
+├── src/
+│   ├── app/               # Next.js App Router pages & layouts
+│   ├── components/
+│   │   ├── canvas/        # R3F 3D Scenes, CameraRigs, Effects, Models
+│   │   ├── ui/            # Overlay UI components (Hero, About, Projects)
+│   │   └── providers/     # Page shells and experience stores
+│   ├── data/              # Portfolio content & technical configuration
+│   ├── hooks/             # Custom performance & animation hooks
+│   ├── lib/               # Camera paths and GSAP setup
+│   └── store/             # Zustand state management
+└── tailwind.config.js     # Custom UI theme & styling variables
+
+1. Clone the repository
+git clone [https://github.com/muhammadhaseeb-va/haseeb-portfolio.git](https://github.com/muhammadhaseeb-va/haseeb-portfolio.git)
+cd haseeb-portfolio
+
+2. Install dependencies
 npm install
-cp .env.example .env.local
-```
 
-Open `.env.local` and paste your [Web3Forms](https://web3forms.com) access key into
-`NEXT_PUBLIC_WEB3FORMS_KEY`. Without it, the contact form shows a friendly
-message instead of submitting (it never fails silently).
+3. Setup environment variables
+Create a .env.local file in the root directory and add your Web3Forms access key:
+NEXT_PUBLIC_WEB3FORMS_KEY=your_access_key_here
 
-## 2. Add your images
+4. Run the development server
+npm run dev
+Open http://localhost:3000 in your browser to view the project.
 
-Copy these files from your old `assets/images/` folder into `public/images/`,
-keeping the same names and subfolders:
 
-```
-public/images/
-├── hero.png
-├── profile2.jpg
-├── favicon.png
-├── contact1.png
-├── certificates/
-│   ├── hubspot-inbound-sales.png
-│   ├── google-bootcamp.png
-│   ├── gemini-educator.png
-│   ├── google-educator.png
-│   ├── digiskills-freelancing.png
-│   ├── digiskills-seo.png
-│   ├── hp-ai.png
-│   └── linkedin-ai-ethics.png
-└── educat/
-    ├── college.jpg
-    └── school.jpg
-```
+📦 Build for Production
+To create an optimized production build:
+npm run build
+npm run start
 
-The site renders without them, but certificate plates and portraits will
-show broken-image icons until they're in place.
 
-## 3. Run it
+👤 Author
+Muhammad Haseeb Ashraf
 
-```bash
-npm run dev      # http://localhost:3000
-npm run build && npm start   # production build
-```
+Portfolio: haseeb-portfolio-ochre.vercel.app
 
-## Editing content
+GitHub: @muhammadhaseeb-va
 
-Everything you'd want to change — name, bio, skills, education, experience,
-certificates, contact info, social links — lives in one file:
+⭐ If you like this project, give it a star on GitHub!
 
-```
-src/data/portfolio.js
-```
 
-Edit that file and every section (DOM cards, the 3D skill orbs, the journey
-timeline, the certificate plates) updates together, since they all read from
-the same arrays.
 
-## Performance tiers
-
-The site detects device capability once on load (`src/hooks/usePerformanceTier.js`)
-and writes it to `<html data-tier="...">`:
-
-- **high** — full bloom post-processing, distortion shader, dense stars
-- **medium** — default for most phones; no post-processing
-- **low** — flat materials, solid glass panels, no grain overlay
-- **static** — no WebGL at all (unsupported browser, `prefers-reduced-motion`,
-  or Save-Data): the canvas never mounts and the site is plain, fast HTML/CSS
-
-## Known placeholders
-
-- **Twitter link** in `src/data/portfolio.js` → `socials` still points at
-  `https://twitter.com/` (no handle was in the original site). Update it once
-  you have a real profile URL.
